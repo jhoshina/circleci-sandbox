@@ -17,6 +17,7 @@ dependencies:
   cache_directories:
     - ~/cache
     - ~/perl
+    - local
 
   pre:
     # Install MySQL
