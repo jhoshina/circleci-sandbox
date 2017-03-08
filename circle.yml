@@ -4,5 +4,8 @@ machine:
     LANG: ja_JP.UTF-8
     LC_ALL: ja_JP.UTF-8
   pre:
-    - sudo locale -a | grep -i ja
+    - sudo apt-get update
+    - sudo apt-get --reinstall install -qq language-pack-ja
+    - sudo locale-gen ja_JP.UTF-8
+    - sudo update-locale LANG=ja_JP.UTF-8
 
