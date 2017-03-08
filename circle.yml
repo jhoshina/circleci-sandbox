@@ -39,6 +39,10 @@ dependencies:
     - curl -L https://cpanmin.us/ | perl - --notest Carton
 
   override:
-    - npm install
     - echo "carton install"
+    - npm install
 
+test:
+  override:
+    - echo "carton exec -- prove"
+    - npm test
