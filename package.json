@@ -1,0 +1,21 @@
+{
+  "name": "circleci-sandbox",
+  "version": "1.0.0",
+  "private": true,
+  "description": "hello, circleci!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo hello"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jhoshina/circleci-sandbox.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jhoshina/circleci-sandbox/issues"
+  },
+  "homepage": "https://github.com/jhoshina/circleci-sandbox#readme"
+}
