@@ -47,3 +47,9 @@ test:
   override:
     - echo "carton exec -- prove"
     - npm test
+
+deployment:
+  production:
+    commands:
+      - git clone git@github.com:jhoshina/jqmobi-sandbox.git tmp/jqmobi-sandbox
+
