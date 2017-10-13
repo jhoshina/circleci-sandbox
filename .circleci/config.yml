@@ -19,7 +19,7 @@ jobs:
       - checkout
       - run:
           name: Greeting
-          command: echo Hello, world. ($CIRCLE_TAG)
+          command: echo Hello, world. $CIRCLE_TAG
       - run:
           name: Print the Current Time
           command: date
