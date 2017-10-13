@@ -19,7 +19,7 @@ jobs:
       - checkout
       - run:
           name: Greeting
-          command: echo Hello, world.
+          command: echo Hello, world. ($CIRCLE_TAG)
       - run:
           name: Print the Current Time
           command: date
@@ -30,9 +30,10 @@ workflows:
   build-n-test:
     jobs:
       - build
+
+  deploy-deploy:
+    jobs:
       - deploy:
-          requires:
-            - build
           filters:
             tags:
               only: /v[0-9]+(\.[0-9]+)*/
