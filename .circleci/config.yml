@@ -4,19 +4,25 @@ orbs:
   node: circleci/node@5.1.0
 
 jobs:
-  build:
+  setup:
     executor: node/default
     steps:
       - checkout
       - node/install-packages
-      - run:
-          name: Greeting
-          command: echo Hello, world.
-      - run:
-          name: Print the Current Time
-          command: date
+      - persist_to_workspace:
+          root: ~/project
+          paths:
+            - .
+
+  build:
+    executor: node/default
+    steps:
+      - attach_workspace:
+          at: ~/project
       - run:
           command: ls ~/project
+      - run:
+          command: mkdir build && touch build/hello.txt
       - persist_to_workspace:
           root: ~/project
           paths:
@@ -40,10 +46,16 @@ workflows:
   version: 2
   un-tagged-build:
     jobs:
+      - setup:
+          filters:
+            tags:
+              ignore: /^.*/
       - build:
           filters:
             tags:
               ignore: /^.*/
+          requires:
+              - setup
   tagged-build:
     jobs:
       - deploy:
