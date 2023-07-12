@@ -5,6 +5,7 @@
   "description": "hello, circleci!",
   "main": "index.js",
   "scripts": {
+    "build": "tsc",
     "test": "echo hello"
   },
   "repository": {
