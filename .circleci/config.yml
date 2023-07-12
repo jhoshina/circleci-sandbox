@@ -16,7 +16,7 @@ jobs:
           name: Print the Current Time
           command: date
       - run:
-          command: ls ~/prject
+          command: ls ~/project
       - persist_to_workspace:
           root: ~/project
           paths:
@@ -26,9 +26,9 @@ jobs:
     executor: node/default
     steps:
       - attach_workspace:
-          at: ~/prject
+          at: ~/project
       - run:
-          command: ls ~/prject
+          command: ls ~/project
       - run:
           name: Greeting
           command: echo Hello, world. $CIRCLE_TAG
