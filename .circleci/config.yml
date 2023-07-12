@@ -50,10 +50,14 @@ workflows:
           filters:
             tags:
               ignore: /^.*/
+            branches:
+              only: /.*/
       - build:
           filters:
             tags:
               ignore: /^.*/
+            branches:
+              only: /.*/
           requires:
               - setup
   tagged-build:
