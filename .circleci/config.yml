@@ -22,11 +22,11 @@ jobs:
       - run:
           command: ls ~/project
       - run:
-          command: mkdir build && touch build/hello.txt
+          command: npm run build
       - persist_to_workspace:
           root: ~/project
           paths:
-            - .
+            - build
 
   deploy:
     executor: node/default
@@ -36,35 +36,17 @@ jobs:
       - run:
           command: ls ~/project
       - run:
-          name: Greeting
-          command: echo Hello, world. $CIRCLE_TAG
-      - run:
-          name: Print the Current Time
-          command: date
+          command: ls ~/project/build
 
 workflows:
   version: 2
-  un-tagged-build:
+  build-deploy:
     jobs:
       - setup:
-          filters:
-            tags:
-              ignore: /^.*/
-            branches:
-              only: /.*/
       - build:
-          filters:
-            tags:
-              ignore: /^.*/
-            branches:
-              only: /.*/
           requires:
               - setup
-  tagged-build:
-    jobs:
       - deploy:
-          filters:
-            tags:
-              only: /^v[0-9]+(\.[0-9]+)*/
-            branches:
-              ignore: /.*/
+          requires:
+              - build
+
