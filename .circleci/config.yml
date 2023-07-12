@@ -28,6 +28,16 @@ jobs:
           paths:
             - build
 
+  test:
+    executor: node/default
+    steps:
+      - attach_workspace:
+          at: ~/project
+      - run:
+          command: ls ~/project
+      - run:
+          command: npm test
+
   deploy:
     executor: node/default
     steps:
@@ -43,6 +53,9 @@ workflows:
   build-deploy:
     jobs:
       - setup
+      - test:
+          requires:
+              - setup
       - build:
           requires:
               - setup
